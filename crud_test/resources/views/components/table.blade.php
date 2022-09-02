@@ -1,5 +1,5 @@
-<div class="text-white">
-    <table class="border-spacing-1">
+<div class="text-white overflow-x-scroll">
+    <table class="border-spacing-3">
         <thead>
             <tr>
                 <?php foreach($tableColsName as $col){ ?>
@@ -13,7 +13,7 @@
             <?php
                 foreach($tableData as $row){
             ?>
-            <tr>
+            <tr class="text-center">
                 <?php foreach($row as $cell){ ?>
                     <td><?php echo $cell ?></td>
                 <?php } ?>
