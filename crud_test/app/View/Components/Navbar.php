@@ -6,11 +6,11 @@ use Illuminate\View\Component;
 
 class Navbar extends Component
 {
-    public Array $tables;
+    /* public Array $tables; */
 
-    public function __construct($tables)
+    public function __construct()
     {
-        $this->tables = $tables;
+
     }
 
     public function render()

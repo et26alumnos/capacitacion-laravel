@@ -15,6 +15,12 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    $DBtables = DB::select('SHOW TABLES');
-    return view('home', ['tables' => $DBtables]);
+    return view('home');
+});
+
+Route::get('/table/{tableName}', function ($tableName) {
+    $tableColsName = DB::select("DESCRIBE $tableName");
+    $tableData = DB::select("SELECT * FROM $tableName LIMIT 10");
+
+    return view('home', ['tableColsName' => $tableColsName, 'tableData' => $tableData]);
 });

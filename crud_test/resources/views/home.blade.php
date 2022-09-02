@@ -11,7 +11,14 @@
     </head>
     <body class="bg-gray-900">
         <div class="w-3/4 bg-gray-800 text-white mx-auto mt-8 rounded-lg">
-            <x-navbar :tables=$tables />
+            <x-navbar />
+            <?php
+                if(isset($tableColsName) && isset($tableData)){
+                    ?>
+                        <x-table :tableColsName="$tableColsName" :tableData="$tableData" />
+                    <?php
+                }
+            ?>
         </div>
     </body>
 </html>

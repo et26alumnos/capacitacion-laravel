@@ -7,11 +7,13 @@ use Illuminate\View\Component;
 class Table extends Component
 {
 
-    public $tableName;
+    public Array $tableColsName;
+    public Array $tableData;
 
-    public function __construct()
+    public function __construct($tableColsName, $tableData)
     {
-        //
+        $this->tableColsName = $tableColsName;
+        $this->tableData = $tableData;
     }
 
     public function render()
