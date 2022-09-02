@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/table/{tableName}', function ($tableName) {
     $tableColsName = DB::select("DESCRIBE $tableName");
-    $tableData = DB::select("SELECT * FROM $tableName LIMIT 10");
+    $tableData = DB::select("SELECT * FROM $tableName");
 
     return view('home', ['tableColsName' => $tableColsName, 'tableData' => $tableData]);
 });
