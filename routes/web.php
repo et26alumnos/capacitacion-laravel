@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +15,7 @@ use Illuminate\Support\Facades\DB;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
-Route::get('/table/{tableName}', function ($tableName) {
-    $tableColsName = DB::select("DESCRIBE $tableName");
-    $tableData = DB::select("SELECT * FROM $tableName");
-
-    return view('home', ['tableColsName' => $tableColsName, 'tableData' => $tableData]);
-});
+Route::resource('student', StudentController::class);
