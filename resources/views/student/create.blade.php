@@ -12,29 +12,36 @@
 </head>
 
 <body>
-    <div class="text-white w-5/6 md:w-3/4 lg:w-1/2 mx-auto text-start mt-4">
-        <h2 class="font-semibold text-3xl p-4 bg-gray-800 w-fit rounded-t-lg">Ingresar alumno:<h2>
-                <form action="" method="post" class="w-full border-gray-800 border-solid border-2 rounded-r-lg rounded-b-lg p-8 text-start bg-gray-800 space-y-8">
-                    <div class="flex flex-col justify-center space-y-4">
-                        <label for="name" class="text-white font-semibold">Nombre:</label>
-                        <input type="text" name="name" autocomplete="off" class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
+    <div class="text-dark w-5/6 md:w-3/4 lg:w-1/2 mx-auto text-start mt-4">
+        <form action="{{ url('/student') }}" method="post" class="w-full  border-solid border-2 border-neutral-200 rounded-lg p-8 text-start  space-y-8">
+            @csrf
+                    <div>
+                        <h2 class="font-medium text-3xl">Ingresar alumno:<h2>
                     </div>
                     <div class="flex flex-col justify-center space-y-4">
-                        <label for="surname" class="text-white font-semibold"">Apellido:</label>
-                <input type=" text" name="surname" autocomplete="off" class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
+                        <label for="name" class="text-dark font-normal">Nombre:</label>
+                        <input type="text" name="name" id="name" autocomplete="off" class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
                     </div>
+
                     <div class="flex flex-col justify-center space-y-4">
-                        <label for="dni" class="text-white font-semibold"">DNI:</label>
-                <input type=" text" name="dni" autocomplete="off" class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
+                        <label for="surname" class="text-dark font-normal"">Apellido:</label>
+                        <input type=" text" name="surname" id="surname" autocomplete="off" class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
                     </div>
+
                     <div class="flex flex-col justify-center space-y-4">
-                        <label for="enrolled_at" class="text-white font-semibold"">Fecha de ingreso:</label>
-                <input type=" text" name="enrolled_at" autocomplete="off" class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
+                        <label for="dni" class="text-dark font-normal">DNI:</label>
+                        <input type=" text" name="dni" id="dni" autocomplete="off" maxlength="8" class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
                     </div>
+
                     <div class="flex flex-col justify-center space-y-4">
-                        <label for="studying_in" class="text-white font-semibold"">Cursando en:</label>
-                <!-- <input type=" select" name="studying_in" autocomplete="off" class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" /> -->
-                        <select class="w-3/4 rounded-lg bg-gray-700 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" name="studying_in" required>
+                        <label for="enrolled_at" class="text-dark font-normal"">Fecha de ingreso:</label>
+                <input type="date" max="{{date('d-m-y h:i:s');}}" name="enrolled_at" id="enrolled_at" autocomplete="off" class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" required />
+                    </div>
+
+                    <div class="flex flex-col justify-center space-y-4">
+                        <label for="studying_in" class="text-dark font-normal"">Cursando en:</label>
+                <!-- <input type=" select" name="studying_in" autocomplete="off" class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" /> -->
+                        <select class="w-3/4 rounded-lg bg-neutral-200 py-2 px-1 focus:outline-none focus:ring focus:border-blue-500" name="studying_in" id="studying_in" required>
                             <option value="" disabled selected>Eliga una opción...</option>
                             <option value="6to 12°">6to 12°</option>
                             <option value="5to 10°">5to 10°</option>
@@ -44,9 +51,11 @@
                             <option value="1ro 1°">1ro 1°</option>
                         </select>
                     </div>
+
                     <div>
-                        <input type="submit" id="submitButton" value="Insertar" class="w-40 bg-indigo-600 p-2 text-lg rounded-lg hover:bg-indigo-700 transition duration-300 cursor-pointer">
+                        <input type="submit" id="submit" value="Insertar" class="w-40 bg-indigo-600 p-2 text-lg rounded-lg hover:bg-indigo-700 transition duration-300 cursor-pointer text-white">
                     </div>
+
                 </form>
     </div>
 </body>

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
-use App\Http\Requests\StoreStudentRequest;
-use App\Http\Requests\UpdateStudentRequest;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class StudentController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar la lista de alumnos
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,7 +19,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar el formulario para insertar un alumno
      *
      * @return \Illuminate\Http\Response
      */
@@ -29,14 +29,18 @@ class StudentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar datos de un nuevo alumno
      *
-     * @param  \App\Http\Requests\StoreStudentRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreStudentRequest $request)
+    public function store(Request $request)
     {
-        //
+        $newStudentData = request()->except('_token'); // Excluyendo _token de la petición post
+
+        Student::insert($newStudentData);
+
+        return view('studen.index');
     }
 
     /**
@@ -68,13 +72,13 @@ class StudentController extends Controller
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateStudentRequest $request, Student $student)
+    public function update(Request $request, Student $student)
     {
         //
     }
 
     /**
-     * Remove the specified resource from storage.
+     * ELiminar un alumno X
      *
      * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response

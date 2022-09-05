@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id('student_id');
             $table->string('name');
             $table->string('surname');
-            $table->string('dni');
+            $table->string('dni')->unique();
             $table->date('enrolled_at');
             $table->string('studying_in');
             $table->timestamps();

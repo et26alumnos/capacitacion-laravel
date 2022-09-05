@@ -15,7 +15,7 @@
  html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
-    background: #111827;
+    background: #F5F5F5;
   }
   
   /* Sections
@@ -27,7 +27,7 @@
   
   body {
     margin: 0;
-    background: #111827;
+    background: #F5F5F5;
   }
   
   /**
