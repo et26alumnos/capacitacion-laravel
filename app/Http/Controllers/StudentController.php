@@ -15,7 +15,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return view('student.index');
+        $lol['students'] = Student::paginate(10);
+        return  $lol[1];
     }
 
     /**
