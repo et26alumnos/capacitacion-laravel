@@ -31,6 +31,10 @@ class Student extends Model
     ];
 
     protected $casts = [
-        'enrolled_at' => 'date'
+        'enrolled_at' => 'date:d-m-Y'
     ];
+
+    public function getTableColumns() {
+        return $this->getConnection()->getSchemaBuilder()->getColumnListing($this->getTable());
+    }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Schema;
 
 class StudentController extends Controller
 {
@@ -15,8 +16,10 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $lol['students'] = Student::paginate(10);
-        return  $lol[1];
+/*      $student = new Student();
+        $columnsList = $student->getTableColumns(); */
+        $tableData['students'] = Student::paginate(10)->except(['created_at', 'updated_at']);
+        return view('student.index', ['data' => $tableData['students'], 'columns' => ['ID de alumno', 'Nombre', 'Apellido', 'DNI', 'Inscripto en', 'Cursando en']]);
     }
 
     /**
@@ -41,7 +44,7 @@ class StudentController extends Controller
 
         Student::insert($newStudentData);
 
-        return view('studen.index');
+        return $this->index();
     }
 
     /**
