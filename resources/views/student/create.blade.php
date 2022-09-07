@@ -1,5 +1,5 @@
 <!-- Form para creación de alumno -->
-@php
+{{-- @php
 $inputs = [
     json_encode([
         'label' => 'Nombre:',
@@ -30,7 +30,7 @@ $inputs = [
         'options' => ['6to 12°', '5to 10°', '4to 12°', '3ro 7°', '2do 6°', '1ro 1°'],
     ]),
 ];
-@endphp
+@endphp --}}
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
