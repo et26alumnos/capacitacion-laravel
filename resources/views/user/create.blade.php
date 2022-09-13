@@ -1,4 +1,4 @@
-<!-- Form para creación de alumno -->
+<!-- Form para creación de usuario -->
 {{-- @php
 $inputs = [
     json_encode([
@@ -45,7 +45,7 @@ $inputs = [
 
 <body>
     <div class="text-dark w-5/6 md:w-3/4 lg:w-1/2 mx-auto text-start mt-4">
-        <form action="{{ url('/student') }}" method="post"
+        {{-- <form action="{{ url('/student') }}" method="post"
             class="w-full  border-solid border-2 border-neutral-200 rounded-lg p-8 text-start  space-y-8">
             @csrf
             <div>
@@ -100,7 +100,7 @@ $inputs = [
                     class="w-40 bg-indigo-600 p-2 text-lg rounded-lg hover:bg-indigo-700 transition duration-300 cursor-pointer text-white">
             </div>
 
-        </form>
+        </form> --}}
     </div>
 </body>
 

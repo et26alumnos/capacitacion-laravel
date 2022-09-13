@@ -1,11 +1,11 @@
-<!-- Mostrar lista de alumnos -->
+<!-- Mostrar lista de usuarios -->
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Inicio - Ver usuarios</title>
         <!-- Importando Tailwindcss -->
         @vite('resources/css/app.css')
 </head>
@@ -23,9 +23,9 @@
                     </th> --}}
             </thead>
             <tbody>
-                @foreach ($data as $student)
+                @foreach ($data as $user)
                     <tr class="bg-gray-100 border-b-gray-200 border border-solid">
-                        @foreach (json_decode($student) as $item)
+                        @foreach (json_decode($user) as $item)
                             <td class="py-2">{{ $item }}</td>
                         @endforeach
                     </tr>
