@@ -13,19 +13,20 @@ return new class extends Migration
    */
   public function up()
   {
-    Schema::create('users', function (Blueprint $table) {
-      $table->id('id');
-      $table->string('user')/*->unique()*/;
+    Schema::create('user_section', function (Blueprint $table) {
+      $table->foreignId('section_id')
+        ->constrained('sections')
+        ->cascadeOnUpdate()
+        ->cascadeOnDelete();
+
+      $table->foreignId('user_id')
+        ->constrained('users')
+        ->cascadeOnUpdate()
+        ->cascadeOnDelete();
+      $table->year('current_year');
       $table->timestamps();
     });
   }
-  /* 
-      $table->string('name');
-      $table->string('email')->unique();
-      $table->timestamp('email_verified_at')->nullable();
-      $table->string('password');
-      $table->rememberToken();
-  */
 
   /**
    * Reverse the migrations.
@@ -34,6 +35,6 @@ return new class extends Migration
    */
   public function down()
   {
-    Schema::dropIfExists('users');
+    Schema::dropIfExists('user_section');
   }
 };
