@@ -8,78 +8,101 @@ use Illuminate\Http\Request;
 class SubjectController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Mostrar listado de materias.
      *
+     * @param int $pages
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($enum = 25)
     {
-        //
+        if($enum % 5 != 0 || !($enum >= 5 && $enum <= 100)){
+            $enum = 25;
+        }
+
+        $data['subjects'] = Subject::
+            where('deleted_at', 'NULL')
+            ->paginate($enum);
+
+        return view('subject.index', ['data' => $data]);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Mostrar la vista para crear nueva materia.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+        return view('subject.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Almacenar una nueva materia.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $subjectData = request()->except('_token'); // Se excluye la clave '_token' de la petición post
+
+        Subject::insert($subjectData);
+
+        return $this->index();
     }
 
     /**
-     * Display the specified resource.
+     * Mostrar una materia en específico.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Subject $subject)
+    public function show($id)
     {
-        //
+        $subject = Subject::find($id);
+
+        return view('subject.index', $id);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Mostrar la vista para editar una materia.
      *
      * @param  \App\Models\Subject  $subject
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Subject $subject)
+    public function edit($id)
     {
-        //
+        $subject = Subject::find($id);
+
+        return view('subject.edit', compact('subject'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * Actualizar una materia en específico.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Subject  $subject
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Subject $subject)
+    public function update(Request $request, $id)
     {
-        //
+        $newData = request() -> except(['_token', '_method']);
+        Subject::where('id', $id)
+        ->update($newData);
+
+        return $this->edit($id);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Eliminar una materia en específico.
      *
-     * @param  \App\Models\Subject  $subject
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Subject $subject)
+    public function destroy($id)
     {
-        //
+        Subject::destroy($id);
+        return redirect('subject/');
     }
 }
