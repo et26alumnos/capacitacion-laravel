@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubjectController;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +35,20 @@ Route::get('/subject/{id}/edit', [SubjectController::class, 'edit'])->where('id'
 Route::put('/subject/{subject}', [SubjectController::class, 'update']);
 
 Route::delete('/subject/{id}', [SubjectController::class, 'destroy'])->where('id', '[0-9]+');
+
+
+// Rutas de divisiones 
+// Creo grupo de rutas que comparten el mismo controller
+Route::controller(SectionController::class)->group(function(){ 
+    Route::get('/sections', 'index');
+    Route::get('/sections/{id}', 'show');
+
+    Route::get('/sections/create', 'create');
+    Route::post('/sections', 'store');
+
+    Route::get('/sections/{id}/edit', 'edit');
+    Route::put('/sections/{id}', 'update');
+
+    Route::delete('/sections/delete/{id}', 'destroy');
+});
+//Route::resource('sections', SectionController::class);
